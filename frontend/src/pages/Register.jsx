@@ -38,7 +38,7 @@ const Register = () => {
     } catch (err) {
       const msg = err.response?.data?.errors
         ? err.response.data.errors.map((e) => e.msg).join('. ')
-        : err.response?.data?.message || 'Registration failed. Please try again.';
+        : err.response?.data?.message || (err.message ? `${err.message}. Please check if the backend is running and CORS is configured at: ${api.defaults.baseURL}` : 'Registration failed. Please try again.');
       setError(msg);
     } finally {
       setLoading(false);

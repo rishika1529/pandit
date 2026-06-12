@@ -26,7 +26,7 @@ const Login = () => {
       login(data.token, data.user);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed. Please try again.');
+      setError(err.response?.data?.message || (err.message ? `${err.message}. Please check if the backend is running and CORS is configured at: ${api.defaults.baseURL}` : 'Login failed. Please try again.'));
     } finally {
       setLoading(false);
     }
