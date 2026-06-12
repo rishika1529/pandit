@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark-900 text-dark-100 font-sans antialiased;
+    background-image: 
+      radial-gradient(ellipse at 20% 20%, rgba(97, 114, 243, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-800;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-400 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-dark-300;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-dark-800/60 backdrop-blur-xl border border-dark-600/50 rounded-2xl;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+  .glass-card-hover:hover {
+    @apply border-primary-600/50 -translate-y-1;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(97, 114, 243, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm
+           bg-gradient-to-r from-primary-600 to-accent-purple text-white
+           transition-all duration-200 hover:shadow-glow-purple hover:scale-[1.02] active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm
+           bg-dark-700 border border-dark-500 text-dark-100
+           transition-all duration-200 hover:bg-dark-600 hover:border-dark-400 active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Danger button */
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm
+           bg-red-600/20 border border-red-600/40 text-red-400
+           transition-all duration-200 hover:bg-red-600/30 hover:border-red-500 active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Input field */
+  .input-field {
+    @apply w-full px-4 py-2.5 rounded-xl bg-dark-700 border border-dark-500 text-dark-100
+           placeholder:text-dark-300 text-sm
+           transition-all duration-200 outline-none
+           focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20;
+  }
+
+  /* Label */
+  .form-label {
+    @apply block text-sm font-medium text-dark-200 mb-1.5;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 to-accent-purple bg-clip-text text-transparent;
+  }
+
+  /* Section heading */
+  .section-heading {
+    @apply text-2xl font-bold text-white;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-dark-600/50;
+  }
+}
+
+/* Audio player custom styles */
+audio {
+  width: 100%;
+  border-radius: 12px;
+  outline: none;
+}
+
+audio::-webkit-media-controls-panel {
+  background: rgba(26, 26, 40, 0.9);
+}
+
+/* Upload dropzone */
+.dropzone-active {
+  @apply border-primary-500 bg-primary-600/10;
+  box-shadow: 0 0 0 3px rgba(97, 114, 243, 0.2);
+}
+
+/* Page transitions */
+.page-enter {
+  animation: fadeIn 0.3s ease-in-out;
+}
