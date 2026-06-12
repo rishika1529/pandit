@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import api from '../api/axios';
+import api, { getBackendUrl } from '../api/axios';
 import AudioPlayer from '../components/AudioPlayer';
 import Spinner from '../components/Spinner';
 import Modal from '../components/Modal';
@@ -77,7 +77,7 @@ const RecordingDetail = () => {
     );
   }
 
-  const audioUrl = `/uploads/${recording.fileName}`;
+  const audioUrl = getBackendUrl(`/uploads/${recording.fileName}`);
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 page-enter">

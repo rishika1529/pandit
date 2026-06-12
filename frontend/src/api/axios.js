@@ -1,9 +1,19 @@
 import axios from 'axios';
 
+const baseURL = import.meta.env.VITE_API_URL || '/api';
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL,
   timeout: 30000,
 });
+
+export const getBackendUrl = (path = '') => {
+  // If VITE_API_URL is set (e.g. "https://domain.com/api"), strip the "/api" suffix to get the root host.
+  const base = import.meta.env.VITE_API_URL
+    ? import.meta.env.VITE_API_URL.replace(/\/api\/?$/, '')
+    : '';
+  return `${base}${path}`;
+};
 
 // Attach JWT token to every request
 api.interceptors.request.use(
